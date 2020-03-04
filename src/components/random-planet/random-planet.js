@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner/spinner';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 import './random-planet.css';
 
 export default class RandomPlanet extends Component {
   
   state = {
-    planet: {}
+    planet: {},
+    loading: true,
+    errorIndicator: false
   };
   
   swapiService = new SwapiService();
@@ -15,17 +19,28 @@ export default class RandomPlanet extends Component {
     this.interval = setInterval(this.updatePlanet, 5000);
   };
   
+  errorIndicator = () => {
+    this.setState({
+      loading: false,
+      errorIndicator: true
+    });
+  }
+  
   updatePlanet = () => {
     const id = (Math.floor(Math.random()*20))+2;
     
     this.swapiService
       .getPlanet(id).then((planet) => {
-        this.setState({planet});
-      });
+        this.setState({planet, loading: false});
+      }).catch(this.errorIndicator);
   };
   
   render() {
-    const {planet} = this.state;
+    const {planet, loading, errorIndicator} = this.state;
+    
+    const spinner = loading ? <Spinner /> : null;
+    const error = errorIndicator ? <ErrorIndicator /> : null;
+    const planetView = !(loading || errorIndicator) ? <PlanetView planet={planet} /> : null;
     
     return (
       <div className="wrRandomBlock">
@@ -34,7 +49,9 @@ export default class RandomPlanet extends Component {
             <div className="col-12">
 
               <div className="jumbotron wrRandomPlanet">
-                <PlanetView planet={planet} />
+                {spinner}
+                {error}
+                {planetView}
               </div>
 
             </div>
