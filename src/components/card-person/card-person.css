@@ -1,0 +1,8 @@
+.imgDetailsCard {
+  margin-right: 1rem;
+}
+
+.imgDetailsCard img {
+  width: 120px;
+  height: auto;
+}

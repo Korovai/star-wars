@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SwapiService from '../../services/swapi-service';
 import ListPeople from '../list-people/list-people';
+import CardPerson from '../card-person/card-person';
 
 import './tabel-block.css';
 
@@ -23,11 +24,13 @@ export default class TabelBlock extends Component {
       <div className="wrTabelBlock">
         <div className="container">
           <div className="row">
-            <div className="col-6">  
+            <div className="col-6 text-center">  
               <ListPeople getData={this.swapiService.getAllPeople} onSelectItem={this.onPersonSelected} />     
             </div>
       
-            <div className="col-6"></div>
+            <div className="col-6 text-center">
+              <CardPerson getData={this.swapiService.getPerson} itemId={this.state.selectPerson} />
+            </div>
           </div>
         </div>
       </div>

@@ -22,6 +22,11 @@ export default class SwapiService {
     return people.results.map(this._transformPerson);
   }
   
+  getPerson = async (id) => {
+    const person = await this.getResuorce(`/people/${id}/`);
+    return this._transformPerson(person);
+  }
+  
   getUrlPersonImg = (id) => {
     return `${this._apiImg}/characters/${id}.jpg`;
   }
