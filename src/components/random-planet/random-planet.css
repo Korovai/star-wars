@@ -1,3 +1,26 @@
-.jumbotron {
+.wrRandomPlanet {
+  display: flex;
   border-radius: 10px;
+}
+
+.wrImgRandomPlanet {
+  margin-right: 1rem;
+}
+
+.wrImgRandomPlanet img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.wrInfoRandopPlanet {
+  flex-grow: 1;
+}
+
+.list-group .list-group-item span:first-child {
+  margin-right: .5rem;
+}
+
+.list-group .list-group-item {
+  border-bottom: 1px solid grey;
 }
