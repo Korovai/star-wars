@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Starjhol;
+  src: url(./Starjhol.ttf);
+}
+
+.header {
+  margin-top: 30px;
+}
+
+.header h1 {
+  text-align: center;
+}
+
+.logo,
+.logo:hover,
+.logo:focus,
+.logo:active {
+  font-family: Starjhol;
+  color: #ffee58;
+  text-decoration: none;
+}
