@@ -17,6 +17,15 @@ export default class SwapiService {
     return this._transformPlanet(planet);
   }
   
+  getAllPeople = async () => {
+    const people = await this.getResuorce(`/people/`);
+    return people.results.map(this._transformPerson);
+  }
+  
+  getUrlPersonImg = (id) => {
+    return `${this._apiImg}/characters/${id}.jpg`;
+  }
+  
   getUrlStarshipImg = (id) => {
     return `${this._apiImg}/starships/${id}.jpg`;
   }
@@ -32,6 +41,17 @@ export default class SwapiService {
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
       population: planet.population
+    };
+  }
+  
+  _transformPerson = (person) => {
+    return {
+      id: this.regExpIdElement(person.url),
+      name: person.name,
+      gender: person.gender,
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color,
+      urlPic: this.getUrlPersonImg(this.regExpIdElement(person.url))
     };
   }
 }
