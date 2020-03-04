@@ -25,8 +25,7 @@ export default class RandomPlanet extends Component {
   };
   
   render() {
-    const {id, name, rotationPeriod, diameter, population} = this.state.planet;
-    console.log(this.state);
+    const {planet} = this.state;
     
     return (
       <div className="wrRandomBlock">
@@ -35,27 +34,7 @@ export default class RandomPlanet extends Component {
             <div className="col-12">
 
               <div className="jumbotron wrRandomPlanet">
-                <div className="wrImgRandomPlanet">
-                  <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="Planet" />
-                </div>
-
-                <div className="wrInfoRandopPlanet">
-                  <h3>{name}</h3>
-                  <ul className="list-group">
-                    <li className="list-group-item d-flex">
-                      <span>Population:</span>
-                      <span>{population}</span>
-                    </li>
-                    <li className="list-group-item d-flex">
-                      <span>Rotation Period:</span>
-                      <span>{rotationPeriod}</span>
-                    </li>
-                    <li className="list-group-item d-flex">
-                      <span>Diameter:</span>
-                      <span>{diameter}</span>
-                    </li>
-                  </ul>
-                </div>
+                <PlanetView planet={planet} />
               </div>
 
             </div>
@@ -64,4 +43,34 @@ export default class RandomPlanet extends Component {
       </div>
     );  
   };
+};
+
+const PlanetView = ({planet}) => {
+  const {id, name, rotationPeriod, diameter, population} = planet;
+    
+  return (  
+    <React.Fragment>
+      <div className="wrImgRandomPlanet">
+        <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="Planet" />
+      </div>
+
+      <div className="wrInfoRandopPlanet">
+        <h3>{name}</h3>
+        <ul className="list-group">
+          <li className="list-group-item d-flex">
+            <span>Population:</span>
+            <span>{population}</span>
+          </li>
+          <li className="list-group-item d-flex">
+            <span>Rotation Period:</span>
+            <span>{rotationPeriod}</span>
+          </li>
+          <li className="list-group-item d-flex">
+            <span>Diameter:</span>
+            <span>{diameter}</span>
+          </li>
+        </ul>
+      </div>
+    </React.Fragment>
+  );
 };
