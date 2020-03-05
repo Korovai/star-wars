@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SwapiService from '../../services/swapi-service';
 import ListPeople from '../list-people/list-people';
-import CardPerson from '../card-person/card-person';
+import CardItem, {Record} from '../card-item/card-item';
 
 import './tabel-block.css';
 
@@ -29,7 +29,11 @@ export default class TabelBlock extends Component {
             </div>
       
             <div className="col-6 text-center">
-              <CardPerson getData={this.swapiService.getPerson} itemId={this.state.selectPerson} />
+              <CardItem getData={this.swapiService.getPerson} itemId={this.state.selectPerson}>
+                <Record field="gender" label="Gender" />
+                <Record field="birthYear" label="BirthYear" />
+                <Record field="eyeColor" label="EyeColor" />
+              </CardItem>
             </div>
           </div>
         </div>

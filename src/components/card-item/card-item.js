@@ -1,12 +1,25 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner/spinner';
 
-import './card-person.css';
+import './card-item.css';
 
-export default class CardPerson extends Component {
+const Record = ({item, field, label}) => {
+  return (
+    <li className="list-group-item d-flex">
+      <span>{label}:</span>
+      <span>{item[field]}</span>
+    </li>
+  );
+};
+
+export {
+  Record
+};
+
+export default class CardItem extends Component {
   
   state = {
-    person: null
+    item: null
   };
   
   componentDidMount() {
@@ -22,21 +35,21 @@ export default class CardPerson extends Component {
   updateCard() {
     const {getData, itemId} = this.props;
     
-    getData(itemId).then((person) => {
+    getData(itemId).then((item) => {
       this.setState({
-        person
+        item
       });
     });
   };
   
   render() {
-    const {person} = this.state;
+    const {item} = this.state;
 
-    if(!person) {
+    if(!item) {
       return <Spinner />
     }
     
-    const {name, gender, birthYear, eyeColor, urlPic} = person;
+    const {name, urlPic} = item;
       
     return (
       <div className="jumbotron d-flex">
@@ -47,18 +60,11 @@ export default class CardPerson extends Component {
         <div className="infoDetailsCard">
           <h3>{name}</h3>
           <ul className="list-group">
-            <li className="list-group-item d-flex">
-              <span>Gender:</span>
-              <span>{gender}</span>
-            </li>
-            <li className="list-group-item d-flex">
-              <span>Birth Year:</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item d-flex">
-              <span>Eye Color:</span>
-              <span>{eyeColor}</span>
-            </li>
+            {
+              React.Children.map(this.props.children, (child) => {
+                return React.cloneElement(child, {item});
+              })
+            }
           </ul>            
         </div>
       </div>
