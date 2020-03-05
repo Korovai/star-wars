@@ -31,6 +31,17 @@ export default class SwapiService {
     return `${this._apiImg}/characters/${id}.jpg`;
   }
   
+  getAllStarShips = async () => {
+    const starships = await this.getResuorce('/starships/');
+    return starships.results.map(this._transformStarship);
+  }
+  
+  getStarship = async (id) => {
+    const starship = await this.getResuorce(`/starships/${id}/`);
+    console.log('!!!!!!!!!!!:', starship);
+    return this._transformStarship(starship);
+  }
+  
   getUrlStarshipImg = (id) => {
     return `${this._apiImg}/starships/${id}.jpg`;
   }
@@ -58,5 +69,16 @@ export default class SwapiService {
       eyeColor: person.eye_color,
       urlPic: this.getUrlPersonImg(this.regExpIdElement(person.url))
     };
+  }
+  
+  _transformStarship = (starship) => {
+    return {
+      id: this.regExpIdElement(starship.url),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      length: starship.length,
+      urlPic: this.getUrlStarshipImg(this.regExpIdElement(starship.url))
+    }
   }
 }

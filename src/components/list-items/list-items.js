@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Spinner from '../spinner/spinner';
 import ErrorIndicator from '../error-indicator/error-indicator';
 
-import './list-people.css';
+import './list-items.css';
 
 export default class ListPeople extends Component {
   
