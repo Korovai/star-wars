@@ -1,0 +1,40 @@
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pageNotFound img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.titlePNF {
+  font-size: 1.75rem;
+  font-weight: 500;
+} 
+
+.textPNF {
+  text-align: center;
+}
+
+.btnGoGome {
+  margin-top: 30px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffee58;
+  outline: none;
+}
+
+.btnGoGome a,
+.btnGoGome a:focus {
+  color: #4E5D6C;
+  text-decoration: none;
+}
+
+.btnGoGome a:hover {
+  color: #000;
+  text-decoration: none;
+}

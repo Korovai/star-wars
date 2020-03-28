@@ -19,3 +19,49 @@
   color: #ffee58;
   text-decoration: none;
 }
+
+.wrNavigation {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
+  background-color: #4E5D6C;
+}
+
+.navigation {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  display: block;
+  border-bottom: 3px solid transparent;
+  margin: 0 5px;
+  padding: 0 5px;
+  list-style-type: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.navItem:first-child {
+  margin-left: 0;
+}
+
+.navItem:hover {
+  border-bottom: 3px solid #ffee58;
+}
+
+.navItem a {
+  color: #fff;
+}
+
+.navItem a:hover,
+.navItem a:focus,
+.navItem a:active {
+  color: #ffee58;
+  text-decoration: none;
+}
+
+.activeNavItem a {
+  color: #ffee58;
+}
